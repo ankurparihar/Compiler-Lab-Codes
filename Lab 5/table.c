@@ -41,11 +41,11 @@ void PrintTable(struct lr_table* lrt){
 	}
 	printf("\n");
 	for(int i=0; i<lrt->num_states; ++i){
-		for(int j=0; j<lrt->num_term; ++i){
+		for(int j=0; j<lrt->num_term; ++j){
 			int type = lrt->at.table[i][j].type;
 			if(type==t_shift) printf("s%d ", lrt->at.table[i][j].value);
 			else if(type == t_reduce) printf("r%d ", lrt->at.table[i][j].value);
-			else if(type == t_accept) printf("aa");
+			else if(type == t_accept) printf(" a");
 			else printf("   ");
 		}
 		printf("\n");
@@ -56,10 +56,44 @@ void PrintTable(struct lr_table* lrt){
 	}
 	printf("\n");
 	for(int i=0; i<lrt->num_states; ++i){
-		for(int j=0; j<lrt->num_nonterm; ++i){
-			printf("%d ", lrt->gt.table[i][j]);
+		for(int j=0; j<lrt->num_nonterm; ++j){
+			int val = lrt->gt.table[i][j];
+			if(val==-1) printf("  ");
+			else printf("%d ", val);
 		}
 		printf("\n");
+	}
+}
+
+void PrintTableNice(struct lr_table* lrt){
+	printf("\nTable:\n");
+	// printf("| state | \n");
+	printf("|       |");
+	for(int i=0; i<lrt->num_term; ++i){
+		printf("%c\t", lrt->at.symbols[i]);
+	}
+	printf("|");
+	for(int i=0; i<lrt->num_nonterm; ++i){
+		printf(" %c\t", lrt->gt.symbols[i]);
+	}
+	printf("|\n");
+	int type;
+	for(int i=0; i<lrt->num_states; ++i){
+		printf("|   %2d  |", i);
+		for(int j=0; j<lrt->num_term; ++j){
+			type = lrt->at.table[i][j].type;
+			if(type==t_shift) printf("s%d\t", lrt->at.table[i][j].value);
+			else if(type == t_reduce) printf("r%d\t", lrt->at.table[i][j].value);
+			else if(type == t_accept) printf(" a\t");
+			else printf("\t");
+		}
+		printf("|");
+		for(int j=0; j<lrt->num_nonterm; ++j){
+			int val = lrt->gt.table[i][j];
+			if(val==-1) printf("  \t");
+			else printf("%2d\t", val);
+		}
+		printf("|\n");
 	}
 }
 
@@ -122,20 +156,19 @@ struct lr_table* CreateTable(){
 	printf("Enter action table in matrix form: 00=blank, si=shift i, ri=reduce i, a0=accept\n");
 	lrt->at.table = (struct action**)malloc(lrt->num_states * sizeof(struct action*));
 	int type;
-	scanf("\n");
 	for(int i=0; i<lrt->num_states; ++i){
 		lrt->at.table[i] = (struct action*)malloc(lrt->num_term * sizeof(struct action));
 		for(int j=0; j<lrt->num_term; ++j){
-			scanf("%c%d", &c, &k);
+			scanf(" %c%d", &c, &k);
 			if(c=='s') type = t_shift;
 			else if(c=='r') type = t_reduce;
 			else if(c=='a') type = t_accept;
 			else type = t_blank;
 			lrt->at.table[i][j].type = type;
 			lrt->at.table[i][j].value = k;
-			if(j<lrt->num_term-1) scanf(" ");
+			// if(j<lrt->num_term-1) scanf(" ");
 		}
-		scanf("\n");
+		// scanf("\n");
 	}
 
 	// Enter goto table
@@ -144,11 +177,11 @@ struct lr_table* CreateTable(){
 	for(int i=0; i<lrt->num_states; ++i){
 		lrt->gt.table[i] = (int*)malloc(lrt->num_nonterm * sizeof(int));
 		for(int j=0; j<lrt->num_nonterm; ++j){
-			scanf("%d", &k);
+			scanf(" %d", &k);
 			lrt->gt.table[i][j] = k;
-			if(j<lrt->num_nonterm-1) scanf(" ");
+			// if(j<lrt->num_nonterm-1) scanf(" ");
 		}
-		scanf("\n");
+		// scanf("\n");
 	}
 
 	return lrt;

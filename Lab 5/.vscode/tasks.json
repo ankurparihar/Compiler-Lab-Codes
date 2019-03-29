@@ -37,49 +37,6 @@
 	            "kind": "build",
 	            "isDefault": true
 	        }
-	    },
-		// Python
-		{
-            "label": "run python",
-            "type": "shell",
-            "command": "python3",
-            "args": [
-                "${file}"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-		{
-            "label": "Run pdflatex",
-            "type": "shell",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "command": "pdflatex",
-            "options": {
-                "cwd": "${workspaceFolder}/FR"
-            },
-            "args": [
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "report.tex"
-            ]
-        },
-        {
-            "label": "Run bibtex",
-            "type": "shell",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "command": "bibtex",
-            "args": [
-                "-terse",
-                "*.aux"
-            ]
-        }
+	    }
     ]
 }

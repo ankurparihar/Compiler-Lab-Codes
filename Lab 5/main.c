@@ -3,6 +3,7 @@
 
 int main(){
 	struct lr_table* lrt = CreateTable();
-	PrintTable(lrt);
+	// PrintTable(lrt);
+	PrintTableNice(lrt);
 	return 0;
 }
