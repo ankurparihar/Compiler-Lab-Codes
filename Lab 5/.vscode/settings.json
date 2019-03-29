@@ -1,0 +1,21 @@
+{
+    /* General */
+    "editor.fontFamily": "Consolas, Courier New, monospace, Droid Sans Mono, Droid Sans Fallback",
+    "terminal.integrated.fontSize": 15,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    "editor.multiCursorModifier": "alt",
+
+    /* Git */
+    "git.enabled": false,
+    
+    /* Indention */
+    "editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"files.associations": {
+		"common.h": "c"
+	},
+}
