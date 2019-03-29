@@ -8,10 +8,7 @@
     "terminal.integrated.cursorStyle": "line",
     "editor.multiCursorModifier": "alt",
 
-    /* Git */
-    "git.enabled": false,
-    
-    /* Indention */
+	/* Indention */
     "editor.tabSize": 4,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
