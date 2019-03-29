@@ -67,7 +67,6 @@ void PrintTable(struct lr_table* lrt){
 
 void PrintTableNice(struct lr_table* lrt){
 	printf("\nTable:\n");
-	// printf("| state | \n");
 	printf("|       |");
 	for(int i=0; i<lrt->num_term; ++i){
 		printf("%c\t", lrt->at.symbols[i]);
@@ -166,9 +165,7 @@ struct lr_table* CreateTable(){
 			else type = t_blank;
 			lrt->at.table[i][j].type = type;
 			lrt->at.table[i][j].value = k;
-			// if(j<lrt->num_term-1) scanf(" ");
 		}
-		// scanf("\n");
 	}
 
 	// Enter goto table
@@ -179,9 +176,7 @@ struct lr_table* CreateTable(){
 		for(int j=0; j<lrt->num_nonterm; ++j){
 			scanf(" %d", &k);
 			lrt->gt.table[i][j] = k;
-			// if(j<lrt->num_nonterm-1) scanf(" ");
 		}
-		// scanf("\n");
 	}
 
 	return lrt;
