@@ -1,0 +1,72 @@
+{
+    /* General */
+    "editor.fontFamily": "Consolas, Courier New, monospace, Droid Sans Mono, Droid Sans Fallback",
+	// "editor.fontFamily": "Liberation Mono",
+    // "editor.fontSize": 16,
+    
+    // "editor.fontFamily": "Source Code Pro",
+    // "editor.fontFamily": "Ubuntu"
+    // "editor.fontFamily":  "Consolas, monospace",
+    "terminal.integrated.fontSize": 15,
+    // "terminal.integrated.cursorBlinking": true,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "editor.multiCursorModifier": "alt",
+	/* Themes */
+	"workbench.colorCustomizations":{
+        "[Default High Contrast]": {
+            "editor.lineHighlightBorder": "#000000"
+        }
+    },
+
+    /* Arduino */
+    "files.associations": {
+        "*.ino": "cpp",
+    },
+	//"arduino.path": "/home/ankur/Downloads/Programs/arduino-1.8.5",
+    //"arduino.path": "/home/ankur/Downloads/Programs/arduino-1.8.5",
+    //"[cpp]": {
+    //    
+    //},
+
+    /* Git */
+    "git.enabled": false,
+
+    /* Java */
+    "java.referencesCodeLens.enabled": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+
+    /* Python */
+    //"python.linting.pylintPath": "/home/ankur/.local/bin/pylint",
+    //"python.pythonPath": "/usr/bin/python3",
+    // "python.linting.enabledWithoutWorkspace": false,
+	// "python.pythonPath": "/usr/bin/python3",
+    // "python.unitTest.unittestArgs": [
+    //     "-v",
+    //     "-s",
+    //     ".",
+    //     "-p",
+    //     "*test.py"
+    // ],
+    // "python.unitTest.unittestEnabled": false,
+    // "python.unitTest.promptToConfigure": false,
+    // "python.unitTest.pyTestEnabled": false,
+    // "python.unitTest.nosetestsEnabled": false,
+    // "python.linting.pylintEnabled": true,
+    // "python.linting.enabled": true,
+    
+    /* Indention */
+    "editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+
+	/* PHP*/
+	// "php.suggest.basic": true,
+	"php.validate.executablePath": "/usr/bin/php",
+	"php.validate.run": "onType",
+	"php.suggest.basic": false,
+	workbench.editor
+}

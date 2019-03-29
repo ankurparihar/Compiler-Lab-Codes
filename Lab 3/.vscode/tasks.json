@@ -1,0 +1,85 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+		// g++
+        {
+            "label": "compile C++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++11",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+		// gcc
+		{
+	        "label": "compile C",
+	        "type": "shell",
+	        "command": "gcc",
+	        "args": [
+	            "-g",
+	            // "-std=c++11",
+	            "\"${file}\"",
+	            "-o",
+	            "\"${fileDirname}/${fileBasenameNoExtension}.out\"",
+	            "-lm"       // to link math.h library
+	        ],
+	        "group": {
+	            "kind": "build",
+	            "isDefault": true
+	        }
+	    },
+		// Python
+		{
+            "label": "run python",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+		{
+            "label": "Run pdflatex",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "pdflatex",
+            "options": {
+                "cwd": "${workspaceFolder}/FR"
+            },
+            "args": [
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "report.tex"
+            ]
+        },
+        {
+            "label": "Run bibtex",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "command": "bibtex",
+            "args": [
+                "-terse",
+                "*.aux"
+            ]
+        }
+    ]
+}
