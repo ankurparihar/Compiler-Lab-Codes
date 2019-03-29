@@ -1,0 +1,103 @@
+Linear code: while(x<=20){while(x==8){x=5+9;}a=5*b;g=56*4;}while(x<=20){a=5*b;while(p==f){k=5+p;}g=56*4;}
+Transformed code: W(ICI){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;}
+Grammer Rules: (Total 10)
+ 1. Z ->         ZZ : 2
+ 2. Z ->         ZS : 2
+ 3. Z ->         SZ : 2
+ 4. Z ->    W(E){Z} : 7
+ 5. Z ->      W(E)B : 5
+ 6. E ->        ICI : 3
+ 7. B ->         {} : 2
+ 8. B ->        {S} : 3
+ 9. S ->         SS : 2
+10. S ->     I=IAI; : 6
+W                    |   (ICI){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(                   |    ICI){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(I                  |     CI){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(IC                 |      I){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(ICI                |       ){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by E -> ICI
+W(E                  |       ){W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E)                 |        {W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){                |         W(ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W               |          (ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(              |           ICI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(I             |            CI){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(IC            |             I){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(ICI           |              ){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by E -> ICI
+W(E){W(E             |              ){I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E)            |               {I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){           |                I=IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I          |                 =IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I=         |                  IAI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I=I        |                   AI;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I=IA       |                    I;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I=IAI      |                     ;}I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){I=IAI;     |                      }I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by S -> I=IAI;
+W(E){W(E){S          |                      }I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E){S}         |                       I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by B -> {S}
+W(E){W(E)B           |                       I=IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){W(E)BI          |                        =IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by Z -> W(E)B
+W(E){ZI              |                        =IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=             |                         IAI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=I            |                          AI;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IA           |                           I;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IAI          |                            ;I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IAI;         |                             I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by S -> I=IAI;
+W(E){ZS              |                             I=IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZSI             |                              =IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by Z -> ZS
+W(E){ZI              |                              =IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=             |                               IAI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=I            |                                AI;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IA           |                                 I;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IAI          |                                  ;}W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZI=IAI;         |                                   }W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by S -> I=IAI;
+W(E){ZS              |                                   }W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){ZS}             |                                    W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by Z -> ZS
+W(E){Z}              |                                    W(ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+W(E){Z}W             |                                     (ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by Z -> W(E){Z}
+ZW                   |                                     (ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(                  |                                      ICI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(I                 |                                       CI){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(IC                |                                        I){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(ICI               |                                         ){I=IAI;W(ICI){I=IAI;}I=IAI;} | Reduce by E -> ICI
+ZW(E                 |                                         ){I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E)                |                                          {I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){               |                                           I=IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I              |                                            =IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I=             |                                             IAI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I=I            |                                              AI;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I=IA           |                                               I;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I=IAI          |                                                ;W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){I=IAI;         |                                                 W(ICI){I=IAI;}I=IAI;} | Reduce by S -> I=IAI;
+ZW(E){S              |                                                 W(ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){SW             |                                                  (ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){SW(            |                                                   ICI){I=IAI;}I=IAI;} | Shift
+ZW(E){SW(I           |                                                    CI){I=IAI;}I=IAI;} | Shift
+ZW(E){SW(IC          |                                                     I){I=IAI;}I=IAI;} | Shift
+ZW(E){SW(ICI         |                                                      ){I=IAI;}I=IAI;} | Reduce by E -> ICI
+ZW(E){SW(E           |                                                      ){I=IAI;}I=IAI;} | Shift
+ZW(E){SW(E)          |                                                       {I=IAI;}I=IAI;} | Shift
+ZW(E){SW(E){         |                                                        I=IAI;}I=IAI;} | Shift
+ZW(E){SW(E){I        |                                                         =IAI;}I=IAI;} | Shift
+ZW(E){SW(E){I=       |                                                          IAI;}I=IAI;} | Shift
+ZW(E){SW(E){I=I      |                                                           AI;}I=IAI;} | Shift
+ZW(E){SW(E){I=IA     |                                                            I;}I=IAI;} | Shift
+ZW(E){SW(E){I=IAI    |                                                             ;}I=IAI;} | Shift
+ZW(E){SW(E){I=IAI;   |                                                              }I=IAI;} | Reduce by S -> I=IAI;
+ZW(E){SW(E){S        |                                                              }I=IAI;} | Shift
+ZW(E){SW(E){S}       |                                                               I=IAI;} | Reduce by B -> {S}
+ZW(E){SW(E)B         |                                                               I=IAI;} | Shift
+ZW(E){SW(E)BI        |                                                                =IAI;} | Reduce by Z -> W(E)B
+ZW(E){SZI            |                                                                =IAI;} | Shift
+ZW(E){SZI=           |                                                                 IAI;} | Reduce by Z -> SZ
+ZW(E){ZI=            |                                                                 IAI;} | Shift
+ZW(E){ZI=I           |                                                                  AI;} | Shift
+ZW(E){ZI=IA          |                                                                   I;} | Shift
+ZW(E){ZI=IAI         |                                                                    ;} | Shift
+ZW(E){ZI=IAI;        |                                                                     } | Reduce by S -> I=IAI;
+ZW(E){ZS             |                                                                     } | Shift
+ZW(E){ZS}            |                                                                       | Reduce by Z -> ZS
+ZW(E){Z}             |                                                                       | Reduce by Z -> W(E){Z}
+ZZ                   |                                                                       | Reduce by Z -> ZZ
+Z                    |                                                                       | End
+Correct!

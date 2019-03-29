@@ -1,0 +1,10 @@
+Z ZZ
+Z ZS
+Z SZ
+Z W(E){Z}
+Z W(E)B
+E ICI
+B {}
+B {S}
+S SS
+S I=IAI;
