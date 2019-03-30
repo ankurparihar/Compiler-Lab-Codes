@@ -94,6 +94,7 @@ void PrintTableNice(struct lr_table* lrt){
 		}
 		printf("|\n");
 	}
+	printf("\n");
 }
 
 char* appendToCharArray(char c, char* array, int len){
