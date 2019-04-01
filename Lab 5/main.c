@@ -125,14 +125,10 @@ int* append_int(int n, int *arr, int *p){
 }
 
 int getReduction(int k){
-	// int a[] = {2,2,1};
-	// return a[k-1];
 	return rules[k-1].n;
 }
 
 char getRedChar(int k){
-	// char a[] = {'S','A','A'};
-	// return a[k-1];
 	return rules[k-1].c;
 }
 
