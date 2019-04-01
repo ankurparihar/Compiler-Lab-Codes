@@ -2,13 +2,46 @@
 #include "table.c"
 #define explen 100
 
+struct rule{
+	char c;
+	int n;
+};
+
+struct rule* rules;
+
 int* append_int(int n, int *arr, int *p);
 int getReduction(int k);
 char getRedChar(int k);
 void printStack(int* stack, int n);
 
+struct rule* appendRule(struct rule r, struct rule* _rules, int p){
+	if(p>0 && p%5==0){
+		struct rule* array = (struct rule*)malloc((p+5)*sizeof(struct rule));
+		for(int i=0; i<p; ++i){
+			array[i] = _rules[i];
+		}
+		array[p] = r;
+		return array;
+	}
+	_rules[p] = r;
+	return _rules;
+}
+
 int main(){
 	
+	int num_rules;
+	printf("How many rules are there ?: ");
+	scanf("\n%d", &num_rules);
+	printf("Enter rules properties: left(symbol) right(count). Eg. {A->Aa}=>{A 2}");
+	rules = (struct rule*)malloc(5*sizeof(struct rule));
+	char lhs; int rhs;
+	struct rule r;
+	for(int i=0; i<num_rules; ++i){
+		scanf("\n%c %d", &lhs, &rhs);
+		r.c = lhs;
+		r.n = rhs;
+		rules = appendRule(r, rules, i);
+	}
 	struct lr_table* lrt = CreateTable();
 	// PrintTable(lrt);
 	PrintTableNice(lrt);
@@ -92,13 +125,15 @@ int* append_int(int n, int *arr, int *p){
 }
 
 int getReduction(int k){
-	int a[] = {2,2,1};
-	return a[k-1];
+	// int a[] = {2,2,1};
+	// return a[k-1];
+	return rules[k-1].n;
 }
 
 char getRedChar(int k){
-	char a[] = {'S','A','A'};
-	return a[k-1];
+	// char a[] = {'S','A','A'};
+	// return a[k-1];
+	return rules[k-1].c;
 }
 
 void printStack(int* stack, int n){
