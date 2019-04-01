@@ -13,3 +13,7 @@
 	- Next line Table rules (action) in matrix form: 00=blank, si=shift i, ri=reduce i, a0=accept
 	- Next line Table rules (goto) in matrix form: -1=blank
 	- Final line expression to evaluate
+
+# Tools
+- Use [LR1 machine](http://jsmachines.sourceforge.net/machines/lr1.html) to create and verify programs.
+- Tool's indexing starts from 0 and my program's from 1. so if tools has reduce instruction `r3` my program's input will be `r4`. shift instructions are as it is.
