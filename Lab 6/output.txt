@@ -1,0 +1,72 @@
+How many rules are there ?: Enter rules properties: left(symbol) right(count). Eg. {A->Aa}=>{A 2}How many non-terms are there ?: How many terminals are there ?: How many states are there ?: Enter non terminals: Enter terminals: Enter action table in matrix form: 00=blank, si=shift i, ri=reduce i, a0=accept
+Enter goto table in matrix form: -1=blank
+
+Table:
+|       |+	*	0	1	$	| S	 E	 B	|
+|    0  |		s3	s4		|  	 1	 2	|
+|    1  |s5	s6			 a	|  	  	  	|
+|    2  |r4	r4			r4	|  	  	  	|
+|    3  |r5	r5			r5	|  	  	  	|
+|    4  |r6	r6			r6	|  	  	  	|
+|    5  |		s3	s4		|  	  	 7	|
+|    6  |		s3	s4		|  	  	 8	|
+|    7  |r2	r2			r2	|  	  	  	|
+|    8  |r3	r3			r3	|  	  	  	|
+
+Expression: 1*1+1+1$
+stack: 0 
+shift: s4
+stack: 0 1 4 
+				buffer: 1 
+Rduce: r6
+B = 1
+				buffer: 1 
+stack: 0 B 2 
+Rduce: r4
+E = 1
+				buffer: 1 
+stack: 0 E 1 
+shift: s6
+stack: 0 E 1 * 6 
+				buffer: 1 
+shift: s4
+stack: 0 E 1 * 6 1 4 
+				buffer: 1 1 
+Rduce: r6
+B = 1
+				buffer: 1 1 
+stack: 0 E 1 * 6 B 8 
+Rduce: r3
+E = 1
+				buffer: 1 
+stack: 0 E 1 
+shift: s5
+stack: 0 E 1 + 5 
+				buffer: 1 
+shift: s4
+stack: 0 E 1 + 5 1 4 
+				buffer: 1 1 
+Rduce: r6
+B = 1
+				buffer: 1 1 
+stack: 0 E 1 + 5 B 7 
+Rduce: r2
+E = 2
+				buffer: 2 
+stack: 0 E 1 
+shift: s5
+stack: 0 E 1 + 5 
+				buffer: 2 
+shift: s4
+stack: 0 E 1 + 5 1 4 
+				buffer: 1 1 
+Rduce: r6
+B = 1
+				buffer: 1 1 
+stack: 0 E 1 + 5 B 7 
+Rduce: r2
+E = 3
+				buffer: 3 
+stack: 0 E 1 
+S = 3
+Accepted
