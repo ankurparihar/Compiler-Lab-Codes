@@ -157,7 +157,7 @@ struct rule* appendRule(struct rule r, struct rule* _rules, int p){
 void printBuffer(int buffer[], int buf_pos){
 	printf("\t\t\t\tbuffer: ");
 	for(int i=0; i<=buf_pos; ++i){
-		printf("%d ", buffer[buf_pos]);
+		printf("%d ", buffer[i]);
 	}
 	printf("\n");
 }

@@ -59,10 +59,10 @@ stack: 0 E 1 + 5
 				buffer: 2 
 shift: s4
 stack: 0 E 1 + 5 1 4 
-				buffer: 1 1 
+				buffer: 2 1 
 Rduce: r6
 B = 1
-				buffer: 1 1 
+				buffer: 2 1 
 stack: 0 E 1 + 5 B 7 
 Rduce: r2
 E = 3
