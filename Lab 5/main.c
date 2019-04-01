@@ -69,8 +69,6 @@ int main(){
 		{
 			case t_accept:
 				printf("Accepted\n");
-				// if(expr[i+1]=='\0') printf("Entire");
-				// else printf("Partial (%d)", i);
 				return 0;
 				break;
 			case t_shift:
