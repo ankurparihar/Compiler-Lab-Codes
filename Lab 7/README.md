@@ -5,4 +5,4 @@
 
 **Note:** You may have to make [build.sh](./build.sh) executable by running `chmod +x build.sh`
 
-_Credits:_ Program is copied from @vinagg999
+_Credits:_ Program is copied from [Vinay Aggarwal](https://github.com/vinagg999)
