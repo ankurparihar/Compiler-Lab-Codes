@@ -117,6 +117,10 @@ void reduceStack(double* values, int p, char op, int& p_end){
 			values[p] = values[p] * values[p+1];
 			break;
 		case '/':
+			if(values[p+1]==0){
+				printf("Error: Divide by zero\n");
+				std::exit(1);
+			}
 			values[p] = values[p] / values[p+1];
 			break;
 	
