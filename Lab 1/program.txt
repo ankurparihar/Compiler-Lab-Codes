@@ -11,6 +11,7 @@ int main()
     while (file >> word) 
     {
         cout << word << endl; 
+		i=i+1;
     } 
   
     return 0; 

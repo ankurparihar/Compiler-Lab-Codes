@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
+#include <sstream>
 
 #define tokenLen 100
 #define keywordsCount 10
-#define operatorCount 10
+#define operatorCount 12
 // #define digit [0-9]
 // #define digits digit+
 // #define optDecimal \.digits
@@ -15,7 +16,7 @@
 // #define NUMBER [+-]?digits.optDecimal.optExp
 
 const char* keywords[keywordsCount] = {"int", "main", "float", "endl", "using", "string", "cout", "fstream", "while", "return"};
-const char* operators[operatorCount] = {"<", ">", "<<", ">>", "+", "-", "=", "==", "/", "*"};
+const char* operators[operatorCount] = {"<", ">", "<<", ">>", "+", "-", "=", "==", "/", "*", "++", "--"};
 // char *test1[3]= {"arrtest","ao", "123"};
 
 bool isKeyword(char*, int);
@@ -41,39 +42,53 @@ int main(int argc, char* argv[]){
     int i=0;
     while(fread(&c, sizeof(char), 1, fptr)){
         // if(c==' ' || c=='\n' || c=='\0' || c=='(' || c== ')' || c=='{' || c=='}' || c=='[' || c==']' || c==';' || c==',' || c=='.' || c=='=' || c== '<' || c=='>' || c=='"' || c=='\''){
-		if(c==' ' || c=='\n' || c=='\0' || c=='(' || c== ')' || c=='{' || c=='}' || c=='[' || c==']' || c==';' || c==',' || c=='.' || c=='"' || c=='\''){
+		if(c==' ' || c=='\n' || c=='\0' || c=='(' || c== ')' || c=='{' || c=='}' || c=='[' || c==']' || c==';' || c==',' || c=='.' || c=='"' || c=='\'' || c=='+' || c=='-' || c=='*' || c=='/' || c=='='){
             // check for token
             word[i]='\0';
 			if(c=='"'){
-				c='a';
-				while(fread(&c, sizeof(char), 1, fptr) && c!='"'){}
+				std::stringstream ss;
+				ss << "\"";
+				while(fread(&c, sizeof(char), 1, fptr) && c!='"'){
+					ss << c;
+				}
+				ss << "\"";
+				std::cout << ss.str() << "\tis an identifier\n";
 				i=0;
 				continue;
 			}
 			if(c=='\''){
-				c='a';
-				while(fread(&c, sizeof(char), 1, fptr) && c!='\''){}
+				std::stringstream ss;
+				ss << "'";
+				while(fread(&c, sizeof(char), 1, fptr) && c!='\''){
+					ss << c;
+				}
+				ss << "'";
+				std::cout << ss.str() << "\tis an identifier\n";
 				i=0;
 				continue;
 			}
 			if(i>0){
             	// printf("Checking... %s\n", word);
 				if(isKeyword(word, i)){
-					printf("%s\t is a keyword\n", word);
+					printf("%20s is a keyword\n", word);
 				}
 				else if(isOperator(word, i)){
-					printf("%s\t is a operator\n", word);
+					printf("%20s is a operator\n", word);
 				}
 				else if(isNumber(word, i)){
-					printf("%s\t is a number\n", word);
+					printf("%20s is a number\n", word);
 				}
 				else{
-					printf("%s\t is a identifier\n", word);
+					printf("%20s is a identifier\n", word);
 				}
             	i=0;
 			}
+			if(c=='+' || c=='-' || c=='*' || c=='/' || c=='='){
+				printf("%20c is an operator\n", c);
+				i=0;
+			}
         }
-        else if( (c<='9' && c>='0') || (c <= 'z' || c >= 'a') || (c <= 'Z' && c <= 'A') || (c=='+' || c=='-')){
+        else if( (c<='9' && c>='0') || (c <= 'z' || c >= 'a') || (c <= 'Z' && c <= 'A')){
             word[i]=c;
             ++i;
         }
