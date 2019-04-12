@@ -11,6 +11,7 @@ i = t1
 goto L0 
 L2: 
 t2 = a + b
-a = t2
+t3 = t2 + a
+a = t3
 goto L3 
 L1: 
