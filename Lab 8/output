@@ -1,0 +1,16 @@
+Enter the expression:
+i = 0
+L0: 
+i = b
+t0 = not i
+if t0 goto L1
+goto L2
+L3: 
+t1 = i + 1
+i = t1
+goto L0 
+L2: 
+t2 = a + b
+a = t2
+goto L3 
+L1: 
