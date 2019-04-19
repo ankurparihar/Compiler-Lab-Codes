@@ -4,3 +4,5 @@
 - Run batch script `./build.sh`
 
 **Note:** You may have to make [build.sh](./build.sh) executable by running `chmod +x build.sh`
+
+_Credits:_ Program is copied from [Akshat Arora](https://github.com/AkshatArora)
